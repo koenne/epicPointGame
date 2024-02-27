@@ -3,6 +3,7 @@ window.onload = (event) => {
     document.getElementById("heroSpeech").style.opacity = 0;
     document.getElementById("counterAvatar").style.opacity = 0;
     let IsTextShow = 0;
+    let IsStatueTextShow = 0;
 // Game State
 let gameState = {
     "inventory": [],
@@ -148,7 +149,12 @@ if(IsTextShow == 0){
 }
 }
 const statueText = (whatText, whatID) => {
+    if(IsStatueTextShow == 0){
+        IsStatueTextShow = 1;
         fadeTextIn(whatText, whatID);
+        IsStatueTextShow = 0;
+    }
+
     }
 
 const fadeTextIn = (whatText, whatID) =>{

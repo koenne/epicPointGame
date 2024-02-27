@@ -51,8 +51,16 @@ body {
     background-color: #FFFFFF;
     border-radius: 5px;
     text-align: center;
-    right: 425px;
-    top: 10px;
+    left: 25px;
+    top: -40px;
+}
+#statueSpeech{
+    width: 300px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+    left: 25px;
+    top: -40px;
 }
 
 #counterSpeech {
@@ -117,8 +125,6 @@ body {
     transition: all 0.5s ease-in-out;
 
 }
-
-#tileMap {}
 
 .background {
     position: absolute;

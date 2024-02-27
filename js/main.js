@@ -1,6 +1,7 @@
 window.onload = (event) => {
     document.getElementById("mainTitle").innerText = "Point and Click adventure game";
     document.getElementById("heroSpeech").style.opacity = 0;
+    document.getElementById("counterAvatar").style.opacity = 0;
     let IsTextShow = 0;
 // Game State
 let gameState = {
@@ -76,6 +77,7 @@ function runGame() {
                 break;
             case "statue":
                 console.log("hey you.. wanna know where the key is? It's by the graves.");
+                statueText("hey you.. wanna know where the key is? It's by the graves.", document.getElementById("statueSpeech"));
                 break;
             case "caveChest":
                 console.log("You open the chest and find 50 gold!");
@@ -141,9 +143,13 @@ const whatTextToShow = (whatText, whatID) => {
 if(IsTextShow == 0){
     IsTextShow = 1;
     fadeTextIn(whatText, whatID);
-    IsTextShow = 0;
+    delay(1000).then(() =>     IsTextShow = 0);
+
 }
 }
+const statueText = (whatText, whatID) => {
+        fadeTextIn(whatText, whatID);
+    }
 
 const fadeTextIn = (whatText, whatID) =>{
     whatID.innerHTML = whatText;

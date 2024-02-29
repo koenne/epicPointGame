@@ -10,29 +10,17 @@
         <div id="title">
             <h1 id="mainTitle">something</h1>
         </div>
+        <!--Inventory box-->
+        <div id="inventoryBox" class="foreground">
+            <h2 id="inventoryText">Inventory:</h2>
+            <ul id="inventoryList"></ul>
+        </div>
         <div id="gameWindow">
-            <!--Inventory box-->
-            <div id="inventoryBox" class="foreground">
-                <ul id="inventoryList">
-                </ul>
+            <!--Main Character-->
+            <div id="hero" class="character">
+                <img src="img/animated-character-1-idle.gif" alt="hero charcater" id="heroImage">
             </div>
-            <!--dialog bar-->
-            <div id="dialogBar" class="foreground">
-                <div id="setMainDialog">
-                    <div id="heroAvatar" class="foreground">
-                        <img src="img/portairt.png" alt="hero avatar">
-                    </div>
-                    <div id="heroSpeech" class="foreground">
-
-                    </div>
-                    <div id="counterSpeech" class="foreground">
-                    </div>
-                    <div id="counterAvatar" class="foreground">
-
-                    </div>
-                </div>
-            </div>
-                            <!--Foreground elements-->
+             <!--Foreground elements-->
             <div id="interact">
                 <div id="key" class="foreground"></div>
                 <div id="well" class="foreground"></div>
@@ -41,15 +29,26 @@
                     <div id="statueSpeech" class="foreground"></div>
                 </div>
             </div>
-            <!--Main Character-->
-            <div id="hero" class="character">
-                <img src="img/animated-character-1-idle.gif" alt="hero charcater" id="heroImage">
-            </div>
             <!--Background elements-->
             <div id="tileMap" class="background">
                 <img src="img/tilemap1.jpg" alt="tilemap" draggable="false" id="map">
             </div>
+            <!--dialog bar-->
+         <div id="dialogBar" class="foreground">
+            <div id="setMainDialog">
+                <div id="heroAvatar" class="foreground">
+                    <img src="img/portairt.png" alt="hero avatar">
+                    <div id="heroSpeech" class="foreground">
 
+                    </div>
+                </div>
+                <div id="counterAvatar" class="foreground">
+                    <img src="img/portairStatue.png" alt="npc avatar">
+                    <div id="counterSpeech" class="foreground">
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </body>
 </html>

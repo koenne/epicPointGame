@@ -1,29 +1,27 @@
 window.onload = (event) => {
     document.getElementById("mainTitle").innerText = "Point and Click adventure game";
     document.getElementById("heroSpeech").style.opacity = 0;
-    document.getElementById("counterAvatar").style.opacity = 0;
-    let IsTextShow = 0;
-    let IsStatueTextShow = 0;
+    document.getElementById("counterSpeech").style.opacity = 0;
 // Game State
 let gameState = {
     "inventory": [],
     "coinPickedUp": false
 }
 
-// load data from save file
-fetch('data/save.json').then((response) => {
-    if (response.status == 404) {
-        alert('file not found!');
-    } else {
-        return response.json();
-    }
-}).then((resJson) => {
-    gameState = resJson;
-    runGame();
-}).catch((error) => {
-    console.error(error)
-})
-
+// // load data from save file
+// fetch('data/save.json').then((response) => {
+//     if (response.status == 404) {
+//         alert('file not found!');
+//     } else {
+//         return response.json();
+//     }
+// }).then((resJson) => {
+//     gameState = resJson;
+//     runGame();
+// }).catch((error) => {
+//     console.error(error)
+// })
+runGame();
 function runGame() {
     //Game window reference
     const gameWindow = document.getElementById("gameWindow");
@@ -32,14 +30,13 @@ function runGame() {
     //Main Character
     const mainCharacter = document.getElementById("hero");
     const offsetCharacter = 16;
-    const tree1 = document.getElementById("squareTree");
 
 
     gameWindow.onclick = function (e) {
         var rect = gameWindow.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
-
+        console.log(`x = ${x} and y = ${y}`)
         //TODO: calc offset based on character size
         //TODO: making dialog functionality
 
@@ -47,12 +44,13 @@ function runGame() {
             mainCharacter.style.left = x - offsetCharacter + "px";
             mainCharacter.style.top = y - offsetCharacter + "px";
         }
-
+        delay(1000);
         switch (e.target.id) {
             case "key":
                 console.log("pick up key")
                 document.getElementById("key").remove();
                 changeInventory('key', "add");
+                whatTextToShow("Wow I found a key!", document.getElementById("heroSpeech"));
                 break;
             case "well":
                 if (gameState.coinPickedUp == false) {
@@ -65,8 +63,7 @@ function runGame() {
             case "doorWizardHut":
                 if (checkItem("key")) {
                     console.log("I opened the door. Yeah!");
-                    whatTextToShow("I opened the door. Yeah!", document.getElementById("heroSpeech"));
-                    newMap(1);
+                    newMap(1,0);
                 } else if (checkItem("coin")) {
                     changeInventory("coin", "remove");
                     console.log("Oh no I lost the coin and it didn't open the door.. Feel kinda stupid..");
@@ -78,7 +75,7 @@ function runGame() {
                 break;
             case "statue":
                 console.log("hey you.. wanna know where the key is? It's by the graves.");
-                statueText("hey you.. wanna know where the key is? It's by the graves.", document.getElementById("statueSpeech"));
+                statueText("hey you.. wanna know where the key is? It's by the graves.", document.getElementById("counterSpeech"));
                 break;
             case "caveChest":
                 console.log("You open the chest and find 50 gold!");
@@ -87,8 +84,21 @@ function runGame() {
                 document.getElementById("caveChest").remove();
                 caveChest[0] = 1;
                 break;
+            case "caveEntranceChest1":
+                console.log("You open the chest and find 50 gold!");
+                whatTextToShow("Cool test isn't it", document.getElementById("heroSpeech"));
+                changeInventory("testaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","add");
+                //document.getElementById("caveEntranceChest1").remove();
+                //caveEntranceChest1[0] = 1;
+                break;
             case "caveExit":
-                newMap(0);
+                newMap(0, 0);
+                break;
+            case "caveEntrance":
+                newMap(2,0);
+                break;
+            case "caveEntranceExit":
+                newMap(1,1);
                 break;
             default:
                 break;
@@ -141,18 +151,16 @@ function runGame() {
     }
 }
 const whatTextToShow = (whatText, whatID) => {
-if(IsTextShow == 0){
-    IsTextShow = 1;
+if(IsTextShow == false){
+    IsTextShow = true;
     fadeTextIn(whatText, whatID);
-    delay(1000).then(() =>     IsTextShow = 0);
+}
 
 }
-}
 const statueText = (whatText, whatID) => {
-    if(IsStatueTextShow == 0){
-        IsStatueTextShow = 1;
+    if(IsStatueTextShow == false){
+        IsStatueTextShow = true;
         fadeTextIn(whatText, whatID);
-        IsStatueTextShow = 0;
     }
 
     }
@@ -182,6 +190,8 @@ const fadeTextIn = (whatText, whatID) =>{
         } else {
             whatID.style.opacity = 0;
            clearInterval(interval); // Stop the interval when opacity reaches 1
+           IsTextShow = false;
+           IsStatueTextShow = false;
         }
      }, 50);
   }

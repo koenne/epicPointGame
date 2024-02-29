@@ -1,28 +1,14 @@
-window.onload = (event) => {
-    document.getElementById("mainTitle").innerText = "Point and Click adventure game";
-    document.getElementById("heroSpeech").style.opacity = 0;
-    document.getElementById("counterSpeech").style.opacity = 0;
+document.getElementById("mainTitle").innerText = "Point and Click adventure game";
+document.getElementById("heroSpeech").style.opacity = 0;
+document.getElementById("counterSpeech").style.opacity = 0;
 // Game State
 let gameState = {
     "inventory": [],
     "coinPickedUp": false
 }
-
-// // load data from save file
-// fetch('data/save.json').then((response) => {
-//     if (response.status == 404) {
-//         alert('file not found!');
-//     } else {
-//         return response.json();
-//     }
-// }).then((resJson) => {
-//     gameState = resJson;
-//     runGame();
-// }).catch((error) => {
-//     console.error(error)
-// })
-runGame();
 function runGame() {
+    newMap(0, 1);
+    document.getElementById("start").style.display = "none";
     //Game window reference
     const gameWindow = document.getElementById("gameWindow");
     const inventoryList = document.getElementById("inventoryList");
@@ -149,7 +135,6 @@ function runGame() {
             inventoryList.appendChild(inventoryItem);
         })
     }
-}
 const whatTextToShow = (whatText, whatID) => {
 if(IsTextShow == false){
     IsTextShow = true;

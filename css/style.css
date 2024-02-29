@@ -3,11 +3,13 @@ body {
     height: 100%;
     width: 100%;
     user-select: none; 
+    color: white;
 }
-
+#game{
+    display: none;
+}
 #title {
     font-size: larger;
-    color: white;
     text-align: center;
 }
 
@@ -19,7 +21,6 @@ body {
 }
 #inventoryText{
     text-align: center;
-    color: white;
 }
 #inventoryList{
     background-color: #ffffff;
@@ -73,18 +74,6 @@ body {
     right: 0px;
     bottom: 0px;
 }
-
-#squareTree {
-    width: 64px;
-    height: 64px;
-    background-color: #00ff00;
-    left: 400px;
-    top: 150px;
-    opacity: 1;
-    transition: all 1s ease-in-out;
-
-}
-
 #key {
     width: 32px;
     height: 32px;
@@ -93,21 +82,18 @@ body {
     opacity: 1;
     transition: all 1s ease-in-out;
 }
-
 #well {
     width: 64px;
     height: 64px;
     left: 288px;
     top: 96px;
 }
-
 #doorWizardHut {
     width: 32px;
     height: 64px;
     left: 177px;
     top: 287px;
 }
-
 #statue {
     width: 32px;
     height: 64px;

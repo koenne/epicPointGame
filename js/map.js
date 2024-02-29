@@ -27,7 +27,14 @@ const newMap = (whichMap, whichExit) => {
             node.appendChild(newNode);
             fadeOut(element);
             delay(600).then(() => document.getElementById("map").src = "img/tilemap1.jpg");
-            delay(600).then(() => document.getElementById("hero").style="left: 177px;top: 350px;");
+            if(whichExit == "1")
+            {
+               delay(600).then(() => document.getElementById("hero").style="left: 190px; top: 510px;");
+            }
+            else{
+               delay(600).then(() => document.getElementById("hero").style="left: 177px;top: 350px;");
+            }
+
             break;
          case 1:
             if(caveChest[0] == 0){
@@ -96,11 +103,12 @@ function fadeOut(el) {
       } else {
          clearInterval(interval); // Stop the interval when opacity reaches 0
          delay(500).then(() => fadeIn(el));
-         
+         document.getElementById("game").style.display = "none";
       }
    }, 50);
 }
 function fadeIn(el) {
+   document.getElementById("game").style.display = "inline";
     var opacity = 0; // Initial opacity
     var interval = setInterval(function() {
        if (opacity < 1) {

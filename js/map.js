@@ -17,6 +17,7 @@ const newMap = (whichMap, whichExit) => {
     const element = document.getElementById("bodyID"); 
     switch (whichMap) {
         case 0:
+         playMusic(1);
             var newNode = document.createElement('div');
             newNode.setAttribute("id", well[1]);
             newNode.setAttribute("class", 'foreground');
@@ -51,6 +52,7 @@ const newMap = (whichMap, whichExit) => {
 
             break;
          case 1:
+            playMusic(2);
             if(caveChest[0] == 0){
                 var newNode = document.createElement('div');
                 newNode.setAttribute("id", caveChest[1]);
@@ -85,6 +87,7 @@ const newMap = (whichMap, whichExit) => {
 
             break;
          case 2:
+            playMusic(2);
             var newNode = document.createElement('div');
             newNode.setAttribute("id", caveEntranceExit[1]);
             newNode.setAttribute("class", 'foreground');

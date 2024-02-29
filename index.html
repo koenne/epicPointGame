@@ -7,12 +7,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body id="bodyID">
-        <div id="audio">
-            <audio controls autoplay>
-                <source src="audio/overworld.mp3" type="audio/mpeg">
-                <source src="audio/cave.mp3" type="audio/mpeg">
-            </audio>
-        </div>
+        <audio id="overworldAudio" src="audio/overworld.mp3"></audio>
+        <audio id="caveAudio" src="audio/cave.mp3"></audio>
         <div id="title">
             <h1 id="mainTitle">something</h1>
         </div>
@@ -27,6 +23,19 @@
                 <ul id="inventoryList"></ul>
             </div>
             <div id="gameWindow">
+                <!--dialog bar-->
+                <div id="dialogBar" class="foreground">
+                    <div id="setMainDialog">
+                        <div id="heroAvatar" class="foreground">
+                            <img src="img/portairt.png" alt="hero avatar">
+                            <div id="heroSpeech" class="foreground"></div>
+                        </div>
+                        <div id="counterAvatar" class="foreground">
+                            <img src="img/portairStatue.png" alt="npc avatar">
+                            <div id="counterSpeech" class="foreground"></div>
+                        </div>
+                    </div>
+                 </div>
                 <!--Main Character-->
                 <div id="hero" class="character">
                     <img src="img/animated-character-1-idle.gif" alt="hero charcater" id="heroImage">
@@ -43,19 +52,6 @@
                 <!--Background elements-->
                 <div id="tileMap" class="background">
                     <img src="img/tilemap1.jpg" alt="tilemap" draggable="false" id="map">
-                </div>
-                <!--dialog bar-->
-                <div id="dialogBar" class="foreground">
-                   <div id="setMainDialog">
-                       <div id="heroAvatar" class="foreground">
-                           <img src="img/portairt.png" alt="hero avatar">
-                           <div id="heroSpeech" class="foreground"></div>
-                       </div>
-                       <div id="counterAvatar" class="foreground">
-                           <img src="img/portairStatue.png" alt="npc avatar">
-                           <div id="counterSpeech" class="foreground"></div>
-                       </div>
-                   </div>
                 </div>
             </div>
         </div>

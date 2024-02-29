@@ -1,9 +1,5 @@
-let overworld = new Audio('audio/overworld.mp3');
-let cave = new Audio('audio/cave.mp3');
-overworld.play();
-overworld.pause();
-cave.play();
-cave.pause();
+let overworld = document.getElementById("overworldAudio");
+let cave = document.getElementById("caveAudio");
 const playMusic = (whatTheme) => {
     switch (whatTheme) {
         case 0:

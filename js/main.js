@@ -35,6 +35,7 @@ function runGame() {
             case "key":
                 console.log("pick up key")
                 document.getElementById("key").remove();
+                gravestone[0] = 1;
                 changeInventory('key', "add");
                 whatTextToShow("Wow I found a key!", document.getElementById("heroSpeech"));
                 break;

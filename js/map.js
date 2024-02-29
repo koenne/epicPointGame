@@ -1,5 +1,7 @@
 let well = [`0`,`well`, `width: 64px;height: 64px;left: 288px;top: 96px;`];
 let door = [`0`,`doorWizardHut`, `width: 32px; height: 64px;left: 177px;top: 287px;`];
+let statue = [`0`, `statue`, `width: 32px; height: 64px; left: 704px; top: 287px;`];
+let gravestone = [`0`, `key`, `width: 32px; height: 32px; left: 86px; top: 450px;`];
 let caveChest = [`0`,`caveChest`, `width: 32px; height: 32px; left: 96px; top: 96px;`];
 let caveEntrance = [`0`,`caveEntrance`, `width: 64px; height: 64px; left: 300px; top: 215px;`];
 let caveExit = [`0`,`caveExit`, `width: 32px; height: 32px; left: 1000px; top: 420px;`, `width: 32px; height: 32px; left: 0px; top: 420px;`];
@@ -25,6 +27,18 @@ const newMap = (whichMap, whichExit) => {
             newNode.setAttribute("class", 'foreground');
             newNode.setAttribute("style", door[2]);
             node.appendChild(newNode);
+            if(gravestone[0] == 0){
+               var newNode = document.createElement('div');
+               newNode.setAttribute("id", statue[1]);
+               newNode.setAttribute("class", 'foreground');
+               newNode.setAttribute("style", statue[2]);
+               node.appendChild(newNode);
+               var newNode = document.createElement('div');
+               newNode.setAttribute("id", gravestone[1]);
+               newNode.setAttribute("class", 'foreground');
+               newNode.setAttribute("style", gravestone[2]);
+               node.appendChild(newNode);
+            }
             fadeOut(element);
             delay(600).then(() => document.getElementById("map").src = "img/tilemap1.jpg");
             if(whichExit == "1")

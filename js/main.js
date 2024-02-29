@@ -22,7 +22,6 @@ function runGame() {
         var rect = gameWindow.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
-        console.log(`x = ${x} and y = ${y}`)
         //TODO: calc offset based on character size
         //TODO: making dialog functionality
 
@@ -80,11 +79,14 @@ function runGame() {
                 break;
             case "caveExit":
                 newMap(0, 0);
+                playMusic(1);
                 break;
             case "caveEntrance":
+                playMusic(2);
                 newMap(2,0);
                 break;
             case "caveEntranceExit":
+                playMusic(2);
                 newMap(1,1);
                 break;
             default:

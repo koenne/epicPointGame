@@ -8,6 +8,9 @@ body {
 #game{
     display: none;
 }
+#audio{
+    opacity: 0;
+}
 #title {
     font-size: larger;
     text-align: center;

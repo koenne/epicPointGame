@@ -1,4 +1,3 @@
-document.getElementById("mainTitle").innerText = "Point and Click adventure game";
 document.getElementById("heroSpeech").style.opacity = 0;
 document.getElementById("counterSpeech").style.opacity = 0;
 function runGame() {

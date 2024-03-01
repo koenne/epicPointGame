@@ -120,8 +120,8 @@ function fadeOut(el) {
          el.style.opacity = opacity;
       } else {
          clearInterval(interval); // Stop the interval when opacity reaches 0
-         delay(500).then(() => fadeIn(el));
          document.getElementById("game").style.display = "none";
+         delay(500).then(() => fadeIn(el));
       }
    }, 50);
 }

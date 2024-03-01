@@ -7,8 +7,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body id="bodyID">
-        <audio id="overworldAudio" src="audio/overworld.mp3"></audio>
-        <audio id="caveAudio" src="audio/cave.mp3"></audio>
+        <audio id="overworldAudio" src="audio/overworld.mp3" loop></audio>
+        <audio id="caveAudio" src="audio/cave.mp3" loop></audio>
         <audio id="loadAudio" src="audio/load.wav"></audio>
         <audio id="blockAudio" src="audio/block.wav"></audio>
         <div id="start">
@@ -16,11 +16,15 @@
             <button onclick="runGame()">Click me!</button>
         </div>
         <div id="game">
-            <!--Inventory box-->
-            <div id="inventoryBox" class="foreground">
-                <h2 id="inventoryText">Inventory:</h2>
-                <ul id="inventoryList"></ul>
-            </div>
+                                <!--Inventory box-->
+                                <div id="inventoryBox" class="foreground">
+                                    <h2 id="inventoryText">Inventory:</h2>
+                                    <ul id="inventoryList"></ul>
+                                </div>
+                                <div id="logBox">
+                                    <h2 id="logText">Log:</h2>
+                                    <ul id="logList"></ul>
+                                </div>
             <div id="gameWindow">
                 <!--Main Character-->
                 <div id="hero" class="character">
@@ -34,8 +38,8 @@
                     <img src="img/tilemap1.jpg" alt="tilemap" draggable="false" id="map">
                 </div>
             </div>
-             <!--dialog bar-->
-             <div id="dialogBar" class="foreground">
+            <!--dialog bar-->
+            <div id="dialogBar" class="foreground">
                 <div id="setMainDialog">
                     <div id="heroAvatar" class="foreground">
                         <img src="img/portairt.png" alt="hero avatar">
@@ -46,11 +50,12 @@
                         <div id="counterSpeech" class="foreground"></div>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </body>
 </html>
 <script src="js/variables.js"></script>
+<script src="js/logs.js"></script>
 <script src="js/main.js"></script>
 <script src="js/map.js"></script>
 <script src="js/audio.js"></script>

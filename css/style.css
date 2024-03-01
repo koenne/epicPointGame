@@ -18,12 +18,16 @@ body {
     border-radius: 15px;
     margin: 0 auto;
     position: relative;
+    float: top;
 }
 #start{
     max-width: fit-content;
     border-radius: 15px;
     margin: 0 auto;
     position: relative;
+}
+#inventoryBox{
+    font-size: x-small;  
 }
 #inventoryText{
     text-align: center;
@@ -32,14 +36,35 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     min-width: 150px;
-    max-width: 300px;
+    max-width: 200px;
     min-height: 80px;
     top: 10px;
     left: 10px;
     padding: 25px;
     color: black;
 }
-
+#logBox{
+    margin-left: auto; 
+    margin-right: 0;
+    float: right;
+    font-size: x-small;
+}
+#logText{
+    text-align: center;
+}
+#logList{
+    background-color: #ffffff;
+    border-radius: 10px;
+    min-width: 150px;
+    max-width: 300px;
+    min-height: 80px;
+    top: 10px;
+    left: -10px;
+    padding: 25px;
+    color: black;
+    overflow-y: scroll;
+    max-height: 250px;
+}
 #dialogBar {
     bottom: 0px;
     position: fixed;

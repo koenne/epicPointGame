@@ -1,6 +1,6 @@
 document.getElementById("heroSpeech").style.opacity = 0;
 document.getElementById("counterSpeech").style.opacity = 0;
-function runGame() {
+const runGame = () => {
     newMap(0, 1);
     document.getElementById("start").style.display = "none";
     //Game window reference
@@ -26,7 +26,7 @@ function runGame() {
         delay(1000);
         switch (e.target.id) {
             case "key":
-                console.log("pick up key")
+                logList("Picked up the key");
                 document.getElementById("key").remove();
                 gameState.gravestone[0] = 1;
                 changeInventory('key', "add");
@@ -34,6 +34,7 @@ function runGame() {
                 break;
             case "well":
                 if (gameState.well[0] == 0) {
+                    logList("Picked up a coin");
                     changeInventory("coin", "add");
                     gameState.well[0] = 1;
                     document.getElementById("well").remove();
@@ -41,9 +42,11 @@ function runGame() {
                 break;
             case "doorWizardHut":
                 if (checkItem("key")) {
+                    logList("Entered cave");
                     newMap(1,0);
                 } else if (checkItem("coin")) {
                     changeInventory("coin", "remove");
+                    logList("Lost the coin");
                     whatTextToShow("No way... I actually dropped the coin and now I can't find it.", document.getElementById("heroSpeech"));
                     block.play();
                 } else {
@@ -52,21 +55,25 @@ function runGame() {
                 }
                 break;
             case "statue":
+                logList("Talked to the statue");
                 statueText("Hey traveler. If you're looking for a key then I suggest your search by the graves.", document.getElementById("counterSpeech"));
                 break;
             case "caveChest":
+                logList("Found a sword");
                 whatTextToShow("Looks old but usable", document.getElementById("heroSpeech"));
                 changeInventory("sword","add");
                 document.getElementById("caveChest").remove();
                 gameState.caveChest[0] = 1;
                 break;
             case "caveEntranceChest1":
+                logList("Found a magical ball");
                 whatTextToShow("Feels powerful", document.getElementById("heroSpeech"));
                 changeInventory("magical ball","add");
                 document.getElementById("caveEntranceChest1").remove();
                 gameState.caveEntranceChest1[0] = 1;
                 break;
             case "caveEntranceChest2":
+                logList("Found a magic book");
                 whatTextToShow("Has a nice cover", document.getElementById("heroSpeech"));
                 changeInventory("magic book","add");
                 document.getElementById("caveEntranceChest2").remove();
@@ -74,12 +81,15 @@ function runGame() {
                 break;
             case "caveExit":
                 newMap(0, 0);
+                logList("Entered grassland");
                 break;
             case "caveEntrance":
+                logList("Entered cave treasure room");
                 newMap(2,0);
                 break;
             case "caveEntranceExit":
                 newMap(1,1);
+                logList("Entered cave");
                 break;
             default:
                 break;
@@ -91,7 +101,7 @@ function runGame() {
      * @param {string} itemName 
      * @param {string} action 
      */
-    function changeInventory(itemName, action) {
+    const changeInventory = (itemName, action) => {
         if (itemName == null || action == null) {
             console.error("Wrong parameters given to changeInventory()");
             return;
@@ -117,11 +127,11 @@ function runGame() {
      * @param {string} itemName 
      * @returns 
      */
-    function checkItem(itemName) {
+    const checkItem = (itemName) => {
         return gameState.inventory.includes(itemName);
     }
 
-    function updateInventory(inventory, inventoryList) {
+    const updateInventory = (inventory, inventoryList) => {
         inventoryList.innerHTML = '';
         inventory.forEach(function (item) {
             const inventoryItem = document.createElement("li");
@@ -131,15 +141,15 @@ function runGame() {
         })
     }
 const whatTextToShow = (whatText, whatID) => {
-if(gameState.IsTextShow == false){
-    gameState.IsTextShow = true;
+if(IsTextShow == false){
+    IsTextShow = true;
     fadeTextIn(whatText, whatID);
 }
 
 }
 const statueText = (whatText, whatID) => {
-    if(gameState.IsStatueTextShow == false){
-        gameState.IsStatueTextShow = true;
+    if(IsStatueTextShow == false){
+        IsStatueTextShow = true;
         fadeTextIn(whatText, whatID);
     }
 
@@ -161,7 +171,7 @@ const fadeTextIn = (whatText, whatID) =>{
 }
   };
 
- function fadeTextOut(whatID) {
+ const fadeTextOut = (whatID) => {
      var opacity = 1; // Initial opacity
      var interval = setInterval(function() {
         if (opacity > 0.05) {
@@ -170,8 +180,8 @@ const fadeTextIn = (whatText, whatID) =>{
         } else {
             whatID.style.opacity = 0;
            clearInterval(interval); // Stop the interval when opacity reaches 1
-           gameState.IsTextShow = false;
-           gameState.IsStatueTextShow = false;
+           IsTextShow = false;
+           IsStatueTextShow = false;
         }
      }, 50);
   }

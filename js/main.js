@@ -48,34 +48,34 @@ function runGame() {
                 break;
             case "doorWizardHut":
                 if (checkItem("key")) {
-                    console.log("I opened the door. Yeah!");
                     newMap(1,0);
                 } else if (checkItem("coin")) {
                     changeInventory("coin", "remove");
-                    console.log("Oh no I lost the coin and it didn't open the door.. Feel kinda stupid..");
-                    whatTextToShow("Oh no I lost the coin and it didn't open the door.. I kinda feel stupid..", document.getElementById("heroSpeech"));
+                    whatTextToShow("No way... I actually dropped the coin and now I can't find it.", document.getElementById("heroSpeech"));
                 } else {
-                    console.log("Fuck this door is locked and I don't have a key. boohoo :(");
-                    whatTextToShow("Fuck this door is locked and I don't have a key. boohoo :(", document.getElementById("heroSpeech"));
+                    whatTextToShow("Hm, this door appears to be locked. Maybe if I can find a key somewhere. This door does have a drawing of a statue on it...", document.getElementById("heroSpeech"));
                 }
                 break;
             case "statue":
-                console.log("hey you.. wanna know where the key is? It's by the graves.");
-                statueText("hey you.. wanna know where the key is? It's by the graves.", document.getElementById("counterSpeech"));
+                statueText("Hey traveler. If you're looking for a key then I suggest your search by the graves.", document.getElementById("counterSpeech"));
                 break;
             case "caveChest":
-                console.log("You open the chest and find 50 gold!");
-                whatTextToShow("Wow I found 50 gold!", document.getElementById("heroSpeech"));
-                changeInventory("50 gold","add");
+                whatTextToShow("Looks old but usable", document.getElementById("heroSpeech"));
+                changeInventory("sword","add");
                 document.getElementById("caveChest").remove();
                 caveChest[0] = 1;
                 break;
             case "caveEntranceChest1":
-                console.log("You open the chest and find 50 gold!");
-                whatTextToShow("Cool test isn't it", document.getElementById("heroSpeech"));
-                changeInventory("testaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","add");
-                //document.getElementById("caveEntranceChest1").remove();
-                //caveEntranceChest1[0] = 1;
+                whatTextToShow("Feels powerful", document.getElementById("heroSpeech"));
+                changeInventory("magical ball","add");
+                document.getElementById("caveEntranceChest1").remove();
+                caveEntranceChest1[0] = 1;
+                break;
+            case "caveEntranceChest2":
+                whatTextToShow("Has a nice cover", document.getElementById("heroSpeech"));
+                changeInventory("magic book","add");
+                document.getElementById("caveEntranceChest2").remove();
+                caveEntranceChest2[0] = 1;
                 break;
             case "caveExit":
                 newMap(0, 0);
@@ -131,7 +131,7 @@ function runGame() {
         inventory.forEach(function (item) {
             const inventoryItem = document.createElement("li");
             inventoryItem.id = 'inv-' + item;
-            inventoryItem.innerText = item;
+            inventoryItem.innerText = item.charAt(0).toUpperCase() + item.slice(1);
             inventoryList.appendChild(inventoryItem);
         })
     }

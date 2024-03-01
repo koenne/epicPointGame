@@ -7,6 +7,7 @@ let caveEntrance = [`0`,`caveEntrance`, `width: 64px; height: 64px; left: 300px;
 let caveExit = [`0`,`caveExit`, `width: 32px; height: 32px; left: 1000px; top: 420px;`, `width: 32px; height: 32px; left: 0px; top: 420px;`];
 let caveEntranceExit = [`0`, `caveEntranceExit`, `width: 64px; height: 64px; left: 815px; top: 800px;`];
 let caveEntranceChest1 = [`0`, `caveEntranceChest1`, `width: 32px; height: 32px; left: 122px; top: 100px;`];
+let caveEntranceChest2 = [`0`, `caveEntranceChest2`, `width: 32px; height: 32px; left: 1350px; top: 100px;`];
 let IsTextShow = false;
 let IsStatueTextShow = false;
 
@@ -93,11 +94,21 @@ const newMap = (whichMap, whichExit) => {
             newNode.setAttribute("class", 'foreground');
             newNode.setAttribute("style", caveEntranceExit[2]);
             node.appendChild(newNode);
-            var newNode = document.createElement('div');
-            newNode.setAttribute("id", caveEntranceChest1[1]);
-            newNode.setAttribute("class", 'foreground');
-            newNode.setAttribute("style", caveEntranceChest1[2]);
-            node.appendChild(newNode);
+            if(caveEntranceChest1[0] == 0){
+               var newNode = document.createElement('div');
+               newNode.setAttribute("id", caveEntranceChest1[1]);
+               newNode.setAttribute("class", 'foreground');
+               newNode.setAttribute("style", caveEntranceChest1[2]);
+               node.appendChild(newNode);
+            }
+            if(caveEntranceChest2[0] == 0){
+               var newNode = document.createElement('div');
+               newNode.setAttribute("id", caveEntranceChest2[1]);
+               newNode.setAttribute("class", 'foreground');
+               newNode.setAttribute("style", caveEntranceChest2[2]);
+               node.appendChild(newNode);
+            }
+
             fadeOut(element);
             delay(600).then(() => document.getElementById("map").src = "img/tilemap3.png");
             delay(600).then(() => document.getElementById("hero").style="left: 815px; top: 800px;");

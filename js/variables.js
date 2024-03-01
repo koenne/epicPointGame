@@ -1,7 +1,6 @@
 // Game State
 let gameState = {
     "inventory": [],
-    "coinPickedUp": false,
     "well": [`0`,`well`, `width: 64px;height: 64px;left: 288px;top: 96px;`],
     "door": [`0`,`doorWizardHut`, `width: 32px; height: 64px;left: 177px;top: 287px;`],
     "statue": [`0`, `statue`, `width: 32px; height: 64px; left: 704px; top: 287px;`],

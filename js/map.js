@@ -12,6 +12,7 @@ let IsTextShow = false;
 let IsStatueTextShow = false;
 
 const newMap = (whichMap, whichExit) => {
+   load.play();
     const node = document.getElementById("interact");
     node.innerHTML = '';
     node.textContent = '';

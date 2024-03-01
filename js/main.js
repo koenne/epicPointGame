@@ -52,7 +52,9 @@ function runGame() {
                 } else if (checkItem("coin")) {
                     changeInventory("coin", "remove");
                     whatTextToShow("No way... I actually dropped the coin and now I can't find it.", document.getElementById("heroSpeech"));
+                    block.play();
                 } else {
+                    block.play();
                     whatTextToShow("Hm, this door appears to be locked. Maybe if I can find a key somewhere. This door does have a drawing of a statue on it...", document.getElementById("heroSpeech"));
                 }
                 break;

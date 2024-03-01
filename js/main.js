@@ -1,11 +1,6 @@
 document.getElementById("mainTitle").innerText = "Point and Click adventure game";
 document.getElementById("heroSpeech").style.opacity = 0;
 document.getElementById("counterSpeech").style.opacity = 0;
-// Game State
-let gameState = {
-    "inventory": [],
-    "coinPickedUp": false
-}
 function runGame() {
     newMap(0, 1);
     document.getElementById("start").style.display = "none";
@@ -34,16 +29,15 @@ function runGame() {
             case "key":
                 console.log("pick up key")
                 document.getElementById("key").remove();
-                gravestone[0] = 1;
+                gameState.gravestone[0] = 1;
                 changeInventory('key', "add");
                 whatTextToShow("Wow I found a key!", document.getElementById("heroSpeech"));
                 break;
             case "well":
-                if (gameState.coinPickedUp == false) {
+                if (gameState.well[0] == 0) {
                     changeInventory("coin", "add");
-                    gameState.coinPickedUp = true;
-                } else {
-                    console.log("There are no more coins in this well!");
+                    gameState.well[0] = 1;
+                    document.getElementById("well").remove();
                 }
                 break;
             case "doorWizardHut":
@@ -65,19 +59,19 @@ function runGame() {
                 whatTextToShow("Looks old but usable", document.getElementById("heroSpeech"));
                 changeInventory("sword","add");
                 document.getElementById("caveChest").remove();
-                caveChest[0] = 1;
+                gameState.caveChest[0] = 1;
                 break;
             case "caveEntranceChest1":
                 whatTextToShow("Feels powerful", document.getElementById("heroSpeech"));
                 changeInventory("magical ball","add");
                 document.getElementById("caveEntranceChest1").remove();
-                caveEntranceChest1[0] = 1;
+                gameState.caveEntranceChest1[0] = 1;
                 break;
             case "caveEntranceChest2":
                 whatTextToShow("Has a nice cover", document.getElementById("heroSpeech"));
                 changeInventory("magic book","add");
                 document.getElementById("caveEntranceChest2").remove();
-                caveEntranceChest2[0] = 1;
+                gameState.caveEntranceChest2[0] = 1;
                 break;
             case "caveExit":
                 newMap(0, 0);
@@ -138,15 +132,15 @@ function runGame() {
         })
     }
 const whatTextToShow = (whatText, whatID) => {
-if(IsTextShow == false){
-    IsTextShow = true;
+if(gameState.IsTextShow == false){
+    gameState.IsTextShow = true;
     fadeTextIn(whatText, whatID);
 }
 
 }
 const statueText = (whatText, whatID) => {
-    if(IsStatueTextShow == false){
-        IsStatueTextShow = true;
+    if(gameState.IsStatueTextShow == false){
+        gameState.IsStatueTextShow = true;
         fadeTextIn(whatText, whatID);
     }
 
@@ -177,8 +171,8 @@ const fadeTextIn = (whatText, whatID) =>{
         } else {
             whatID.style.opacity = 0;
            clearInterval(interval); // Stop the interval when opacity reaches 1
-           IsTextShow = false;
-           IsStatueTextShow = false;
+           gameState.IsTextShow = false;
+           gameState.IsStatueTextShow = false;
         }
      }, 50);
   }

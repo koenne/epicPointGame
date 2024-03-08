@@ -47,7 +47,7 @@ const newMap = (whichMap, whichExit) => {
                
             }
             else{
-               delay(600).then(() => document.getElementById("hero").style="left: 177px;top: 350px;");
+               delay(600).then(() => document.getElementById("hero").style="left: 330px; top: 25px");
             }
 
             break;

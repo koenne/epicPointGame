@@ -43,6 +43,7 @@ const runGame = () => {
             case "doorWizardHut":
                 if (checkItem("key")) {
                     logList("Entered cave");
+                    gameState.doorOpen = true;
                     newMap(1,0);
                 } else if (checkItem("coin")) {
                     changeInventory("coin", "remove");
@@ -83,10 +84,26 @@ const runGame = () => {
                 newMap(0, 0);
                 logList("Entered grassland");
                 break;
+            case "caveExit2":
+                newMap(3, 1);
+                logList("Entered grassland two");
+                break;
+            case "grassLand2":
+                newMap(3, 0);
+                logList("Entered grassland two");
+                break;
+                case "grassLand1":
+                    newMap(0, 2);
+                    logList("Entered grassland");
+                    break;
             case "caveEntrance":
                 logList("Entered cave treasure room");
                 newMap(2,0);
                 break;
+                case "caveEntrance2":
+                    logList("Entered cave treasure room");
+                    newMap(1,2);
+                    break;
             case "caveEntranceExit":
                 newMap(1,1);
                 logList("Entered cave");

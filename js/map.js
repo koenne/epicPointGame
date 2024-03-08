@@ -19,6 +19,11 @@ const newMap = (whichMap, whichExit) => {
             newNode.setAttribute("class", 'foreground');
             newNode.setAttribute("style", gameState.door[2]);
             node.appendChild(newNode);
+            var newNode = document.createElement('div');
+            newNode.setAttribute("id", gameState.grassLand2[1]);
+            newNode.setAttribute("class", 'foreground');
+            newNode.setAttribute("style", gameState.grassLand2[2]);
+            node.appendChild(newNode);
             if(gameState.gravestone[0] == 0){
                var newNode = document.createElement('div');
                newNode.setAttribute("id", gameState.statue[1]);
@@ -37,6 +42,10 @@ const newMap = (whichMap, whichExit) => {
             {
                delay(600).then(() => document.getElementById("hero").style="left: 190px; top: 510px;");
             }
+            else if(whichExit == "2"){
+               delay(600).then(() => document.getElementById("hero").style="left: 770px; top: 175px;");
+               
+            }
             else{
                delay(600).then(() => document.getElementById("hero").style="left: 177px;top: 350px;");
             }
@@ -51,25 +60,31 @@ const newMap = (whichMap, whichExit) => {
                 newNode.setAttribute("style", gameState.caveChest[2]);
                 node.appendChild(newNode);
             }
-            var newNode = document.createElement('div');
-            newNode.setAttribute("id", gameState.caveEntrance[1]);
-            newNode.setAttribute("class", 'foreground');
-            newNode.setAttribute("style", gameState.caveEntrance[2]);
-            node.appendChild(newNode); 
+            if(gameState.doorOpen){
             var newNode = document.createElement('div');
             newNode.setAttribute("id", gameState.caveExit[1]);
             newNode.setAttribute("class", 'foreground');
             newNode.setAttribute("style", gameState.caveExit[2]);
             node.appendChild(newNode);
+            }
             var newNode = document.createElement('div');
-            newNode.setAttribute("id", gameState.caveExit[1]);
+            newNode.setAttribute("id", gameState.caveEntrance[1]);
             newNode.setAttribute("class", 'foreground');
-            newNode.setAttribute("style", gameState.caveExit[3]);
+            newNode.setAttribute("style", gameState.caveEntrance[2]);
+            node.appendChild(newNode); 
+            
+            var newNode = document.createElement('div');
+            newNode.setAttribute("id", gameState.caveExit2[1]);
+            newNode.setAttribute("class", 'foreground');
+            newNode.setAttribute("style", gameState.caveExit2[2]);
             node.appendChild(newNode);
             fadeOut(element);
             delay(600).then(() => document.getElementById("map").src = "img/tilemap2.png");
             if(whichExit == "1"){
                delay(600).then(() => document.getElementById("hero").style="left: 315px; top: 225px;");
+            }
+            else if(whichExit == "2"){
+               delay(600).then(() => document.getElementById("hero").style="left: 1000px; top: 420px;");
             }
             else{
                delay(600).then(() => document.getElementById("hero").style="left: 20px; top: 410px");
@@ -102,6 +117,30 @@ const newMap = (whichMap, whichExit) => {
             fadeOut(element);
             delay(600).then(() => document.getElementById("map").src = "img/tilemap3.png");
             delay(600).then(() => document.getElementById("hero").style="left: 815px; top: 800px;");
+            break;
+         case 3:
+            playMusic(1);
+
+            var newNode = document.createElement('div');
+            newNode.setAttribute("id", gameState.grassLand1[1]);
+            newNode.setAttribute("class", 'foreground');
+            newNode.setAttribute("style", gameState.grassLand1[2]);
+            node.appendChild(newNode);
+            var newNode = document.createElement('div');
+            newNode.setAttribute("id", gameState.caveEntrance2[1]);
+            newNode.setAttribute("class", 'foreground');
+            newNode.setAttribute("style", gameState.caveEntrance2[2]);
+            node.appendChild(newNode);
+            fadeOut(element);
+            if(whichExit == "1")
+            {
+               delay(600).then(() => document.getElementById("hero").style="left: 440px; top: 78px;");
+            }
+            else
+            {
+               delay(600).then(() => document.getElementById("hero").style="left: -10px; top: 140px;");
+            }
+            delay(600).then(() => document.getElementById("map").src = "img/tilemap4.png");
             break;
         default:
             break;

@@ -55,7 +55,7 @@ const newMap = (whichMap, whichExit) => {
             newNode.setAttribute("id", gameState.caveEntrance[1]);
             newNode.setAttribute("class", 'foreground');
             newNode.setAttribute("style", gameState.caveEntrance[2]);
-            node.appendChild(newNode);
+            node.appendChild(newNode); 
             var newNode = document.createElement('div');
             newNode.setAttribute("id", gameState.caveExit[1]);
             newNode.setAttribute("class", 'foreground');
